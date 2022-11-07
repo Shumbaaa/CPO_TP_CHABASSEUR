@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="troisiemeTexe" alignment="0" min="-2" pref="253" max="-2" attributes="0"/>
+                      <Component id="premierTexte" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="ouiButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="oui2Button" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="quatriemeTexte" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="kenzoButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="arthurButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="titreTexte" min="-2" pref="245" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="deuxiemeTexte" alignment="0" pref="340" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="nonButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="non2Button" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="racisteButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="tauxAppreciation" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextField1" min="-2" pref="71" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="398" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="titreTexte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="premierTexte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ouiButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="oui2Button" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="deuxiemeTexte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tauxAppreciation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="troisiemeTexe" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="kenzoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="arthurButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="quatriemeTexte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nonButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="non2Button" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="racisteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="87" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="premierTexte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe9;o-Paul Mousally est-il le plus bel humain sur cette plan&#xe8;te?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="ouiButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Oui"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ouiButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="oui2Button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Oui "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="deuxiemeTexte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ton taux d&apos;appr&#xe9;ciation de L&#xe9;o Paul et un petit commentaire:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="tauxAppreciation">
+    </Component>
+    <Component class="javax.swing.JLabel" name="troisiemeTexe">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Plutot team Kenzo ou team Arthur?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="kenzoButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Big Kenzoo \ud83d\ude08 " containsInvalidXMLChars="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kenzoButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="arthurButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arthur en brrr \ud83e\udd11" containsInvalidXMLChars="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="arthurButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="quatriemeTexte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nawfel est il arriv&#xe9; l&#xe9;galement en France?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="nonButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Non"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="non2Button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Surement pas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="racisteButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Je suis raciste"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="racisteButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="titreTexte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Le test de l&apos;amiti&#xe9;: Connais-tu bien tes amis?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ecrivez ici"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
