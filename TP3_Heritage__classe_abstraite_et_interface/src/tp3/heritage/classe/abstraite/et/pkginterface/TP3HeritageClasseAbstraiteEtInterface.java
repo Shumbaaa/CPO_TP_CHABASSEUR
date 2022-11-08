@@ -4,6 +4,8 @@
  */
 package tp3.heritage.classe.abstraite.et.pkginterface;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author solal
@@ -24,6 +26,16 @@ public class TP3HeritageClasseAbstraiteEtInterface {
         System.out.println(baton1);
         
         
+        ArrayList<Armes> tab = new ArrayList<Armes>();
+        tab.add(epee1);
+        tab.add(epee2);
+        tab.add(baton1);
+        tab.add(baton2);
+        
+        System.out.print(tab.get(0));
+        System.out.print(tab.get(1));
+        System.out.print(tab.get(2));
+        System.out.print(tab.get(3));
+        
     }
-    
 }
