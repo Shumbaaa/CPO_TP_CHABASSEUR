@@ -9,7 +9,7 @@ package sp4_console_chabasseur._pommedio;
  * @author solal
  */
 public class CelluleDeGrille {
-    private String jetonCourant=null;
+    private Jeton jetonCourant;
     private boolean avoirTrouNoir;
     private boolean avoirDesintegrateur;
     
@@ -26,15 +26,15 @@ public class CelluleDeGrille {
         }
     }
 
-    public void affecterJeton(String unJeton){ //affecte un jeton dans une cellule
-        jetonCourant=unJeton;
+    public void affecterJeton(Jeton unJeton){ //affecte un jeton dans une cellule
+        this.jetonCourant=unJeton;
     }
 
     public String lireCouleurDuJeton() { //permet de renvoyer la couleur du jeton d'une cellule ou "vide" si il n'y a pas de jeton
         if (jetonCourant==null){
             return "vide";
         }else{
-            return jetonCourant;
+            return jetonCourant.lireCouleur();
         }
     }
     
@@ -53,8 +53,8 @@ public class CelluleDeGrille {
         }
     }
    
-    public String recupererJeton(){ 
-        String jetonRecuperer=jetonCourant; //on recupere le jeton de la cellule que l'on met dans une variable temoporaire
+    public Jeton recupererJeton(){ 
+        Jeton jetonRecuperer=jetonCourant; //on recupere le jeton de la cellule que l'on met dans une variable temoporaire
         jetonCourant=null; //on donne la valeur null au jeton que l'on vient de récuperer
         return jetonRecuperer; //on retourne la valeur du jeton que l'on a récuperer
     }
@@ -80,5 +80,17 @@ public class CelluleDeGrille {
         supprimerJeton();
         supprimerTrouNoir();
     }
-    
+
+    @Override
+    public String toString() {
+        if ("R".equals(jetonCourant)||"J".equals(jetonCourant)){
+            return jetonCourant.lireCouleur();
+        }else if(avoirTrouNoir==true){
+            return "@";
+        }else if(avoirDesintegrateur==true&&avoirTrouNoir==false){
+            return "D";
+        }else{
+            return ".";
+        } 
+    }   
 }

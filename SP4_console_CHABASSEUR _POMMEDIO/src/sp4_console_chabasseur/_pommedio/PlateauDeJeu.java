@@ -19,9 +19,9 @@ public class PlateauDeJeu {
         }
     }
     
-    public int ajouterJetonDansColonne(String unJeton, int uneColonne){
+    public int ajouterJetonDansColonne(Jeton unJeton, int uneColonne){
         for(int ligne=0;ligne<6;ligne++){ //balaye les lignes
-            if (grille[ligne][uneColonne].lireCouleurDuJeton()=="vide"){ //si la cellules est vide
+            if ("vide".equals(grille[ligne][uneColonne].lireCouleurDuJeton())){ //si la cellules est vide
                 grille[ligne][uneColonne].affecterJeton(unJeton); // affecte la valeur du Jeton à la cellules vide
                 return ligne;  //retourne l'indice de ligne du jeton afin de connaitre ses coordonnées
             }
@@ -38,4 +38,30 @@ public class PlateauDeJeu {
         return true; // sinon retourne vrai
     }
     
+    public void afficherGrilleSurConsole(){
+        for(int ligne=5; ligne>=0;ligne--){ //balaye les lignes
+            for(int col=0; col<7;col++){ //balaye les colonnes
+                System.out.print(grille[ligne][col]); //affecte un nouvel objet CelluleDeGrille à chaque cellule du tableau
+            }
+            System.out.println(); //retour à la ligne lorqu'on a fini d'afficher une ligne
+        }
+    }
+    
+    public boolean presenceJeton(int x, int y){
+        return grille[x][y].presenceJeton();
+    }
+    
+    public String lireCouleurDuJeton(int x, int y){
+        return grille[x][y].lireCouleurDuJeton();
+    }
+    
+    public boolean ligneGagnantePourCouleur(String uneCouleur){
+        for(int ligne=0;ligne<6;ligne++){
+            for(int col=0; col<4;col++){
+                if (grille[ligne][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne][col+1].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne][col+2].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne][col+3].lireCouleurDuJeton().equals(uneCouleur));
+                return true;
+            }
+        }
+        return false;
+    }
 }
