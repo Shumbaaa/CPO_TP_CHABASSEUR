@@ -64,4 +64,72 @@ public class PlateauDeJeu {
         }
         return false;
     }
+    
+    public boolean colonneGagnantePourCouleur(String uneCouleur){
+        for(int col=0;col<7;col++){
+            for(int ligne=0;ligne<3;ligne++){
+                if (grille[ligne][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+1][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+2][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+3][col].lireCouleurDuJeton().equals(uneCouleur));
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean diagonaleMontanteGagnantePourCouleur(String uneCouleur){
+        for(int ligne=0; ligne<3;ligne++){
+            for(int col=0; col<4;col++){
+                if (grille[ligne][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+1][col+1].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+2][col+2].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+3][col+3].lireCouleurDuJeton().equals(uneCouleur));
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean diagonaleDescendanteGagnantePourCouleur(String uneCouleur){
+        for(int ligne=3;ligne<6;ligne++){
+            for(int col=0;col<4;col++){
+                if (grille[ligne][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne-1][col+1].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne-2][col+2].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne-3][col+3].lireCouleurDuJeton().equals(uneCouleur));
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void tasserColonne(int uneColonne){
+        for(int ligne=0;ligne<7;ligne++){
+            if (grille[ligne][uneColonne].presenceJeton()==false){
+                if(grille[ligne+1][uneColonne].presenceJeton()==true){
+                    grille[ligne][uneColonne].affecterJeton(grille[ligne+1][uneColonne].recupererJeton());
+                }
+            }
+        }
+    }
+    
+    public boolean colonneRemplie(int uneColonne){
+        if (grille[5][uneColonne].presenceJeton() == true){
+            return true;
+        }
+        return false;
+    }
+    
+    public void placerTrouNoir(int x, int y){
+        grille[x][y].placerTrouNoir();
+    }
+    
+    public void supprimerTrouNoir(int x, int y){
+        grille[x][y].supprimerTrouNoir();
+    }
+    
+    public void placerDesintegrateur(int x, int y){
+        grille[x][y].placerDesintegrateur();
+    }
+    
+    public void supprimerJeton(int x, int y){
+        grille[x][y].supprimerJeton();
+    }
+    
+    public Jeton recupererJeton(int x, int y){
+        return grille[x][y].recupererJeton();
+    }
+   
 }
