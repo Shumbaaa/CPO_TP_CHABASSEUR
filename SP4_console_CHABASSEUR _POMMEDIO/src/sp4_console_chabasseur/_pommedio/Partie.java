@@ -72,9 +72,20 @@ public class Partie {
     }
     
     public void initialiserPartie(){
-        attribuerCouleurAuxJoueurs();
-        creerEtAffecterJeton();
+        attribuerCouleursAuxJoueurs();
+        creerEtAffecterJeton(listeJoueurs[0]);
+        creerEtAffecterJeton(listeJoueurs[1]);
         placerTrousNoirsEtDesintegrateurs();
+    }
+    
+    public void lancerPartie(){
+        boolean FinDePartie=false;
+        joueurCourant=listeJoueurs[0];
+        
+        while(FinDePartie==false){
+            System.out.println(joueurCourant.);
+        }
+        
     }
         
 }

@@ -15,9 +15,11 @@ public class SP4_console_CHABASSEUR_POMEDIO {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Jeton jeton1 = new Jeton("jaune"); //test du constructeur de Jeton
-        System.out.println(jeton1);
+        joueur J1 = new joueur("Solal");
+        joueur J2 = new joueur("Kenzo");
+        Partie game= new Partie(J1,J2);
+        game.initialiserPartie();
+        game.lancerPartie();
     }
     
 }

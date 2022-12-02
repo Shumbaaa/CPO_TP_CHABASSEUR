@@ -80,6 +80,7 @@ public class CelluleDeGrille {
         supprimerJeton();
         supprimerTrouNoir();
     }
+    
 
     @Override
     public String toString() {
