@@ -29,8 +29,30 @@ public class joueur {
         return reserveJetons.size();
     }
     
-    public void ajouterJetons(String unJeton){
+    public void ajouterJetons(Jeton unJeton){
         reserveJetons.add(unJeton);
+    }
+
+    public String getCouleur() {
+        return couleur;
+    }
+     
+    public void jouerJeton(){
+        
+    }
+       
+    public void obtenirDesintegrateur() {
+        nombreDesintegrateurs += 1;
+    }
+    
+    public boolean utiliserDesintegrateur() {
+        if (nombreDesintegrateurs > 0) {
+            nombreDesintegrateurs -= 1;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
 }

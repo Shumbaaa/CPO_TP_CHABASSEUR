@@ -95,6 +95,16 @@ public class PlateauDeJeu {
         return false;
     }
     
+    public boolean etreGagnantePourCouleur(String uneCouleur) {
+        if (ligneGagnantePourCouleur(uneCouleur) == true || colonneGagnantePourCouleur(uneCouleur) == true || diagonaleMontanteGagnantePourCouleur(uneCouleur) == true || diagonaleDescendanteGagnantePourCouleur(uneCouleur) == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    
     public void tasserColonne(int uneColonne){
         for(int ligne=0;ligne<7;ligne++){
             if (grille[ligne][uneColonne].presenceJeton()==false){
@@ -120,12 +130,28 @@ public class PlateauDeJeu {
         grille[x][y].supprimerTrouNoir();
     }
     
+    public boolean presenceTrouNoir(int x, int y){
+        if (grille[x][y].presenceTrouNoir()==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     public void placerDesintegrateur(int x, int y){
         grille[x][y].placerDesintegrateur();
     }
     
     public void supprimerJeton(int x, int y){
         grille[x][y].supprimerJeton();
+    }
+    
+    public boolean presenceDesintegrateur(int x, int y){
+        if (grille[x][y].presenceDesintegrateur()==true){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public Jeton recupererJeton(int x, int y){
