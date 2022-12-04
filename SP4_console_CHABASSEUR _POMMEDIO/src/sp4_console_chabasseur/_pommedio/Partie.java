@@ -121,7 +121,7 @@ public class Partie {
                         plateau.supprimerDesintegrateur(NumLigneJouer, NumColJouer);
                     } 
                 }
-                 if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur())) {
+                if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur()) == true) {
                     System.out.println("Bravo " + joueurCourant.getNom() + " a gagne");
                     plateau.afficherGrilleSurConsole();
                     FinDePartie = true;
@@ -143,24 +143,39 @@ public class Partie {
                 System.out.println("Saisissez le numero de ligne de 1 a 6 du jeton");
                 NumLigneJouer = sc.nextInt()-1;                
 
-                if (plateau.grilleRemplie()==true){
-                    System.out.println("Fin de partie, la grille est remplie");
-                    FinDePartie = true;
-                }
-
                
                 if (plateau.presenceJeton(NumColJouer, NumLigneJouer)== true ){   //
-                    plateau.supprimerJeton(NumColJouer, NumLigneJouer);           //
-                    joueurCourant.ajouterJetons(new Jeton(joueurCourant.getCouleur()));    
-                    plateau.tasserColonne(NumColJouer);                            
+                    if (plateau.lireCouleurDuJeton(NumColJouer,NumLigneJouer)==joueurCourant.getCouleur()){
+                        plateau.supprimerJeton(NumColJouer, NumLigneJouer);           //
+                        joueurCourant.ajouterJetons(new Jeton(joueurCourant.getCouleur()));    
+                        plateau.tasserColonne(NumColJouer); 
+                    }
                 }
 
-
-                if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur())) {
-                    System.out.println("Bravo " + joueurCourant + " a gagne");
+                    
+                if (joueurCourant==listeJoueurs[0]){
+                    if (plateau.etreGagnantePourCouleur(listeJoueurs[0].getCouleur())&&plateau.etreGagnantePourCouleur(listeJoueurs[1].getCouleur())) {
+                        System.out.println("Bravo " + listeJoueurs[1].getNom() + " a gagne par faute de jeu de la part de "+ joueurCourant.getNom());
+                        plateau.afficherGrilleSurConsole();
+                        FinDePartie = true;
+                    }else if (plateau.etreGagnantePourCouleur(listeJoueurs[0].getCouleur())) {
+                    System.out.println("Bravo " + listeJoueurs[0].getNom() + " a gagne");
                     plateau.afficherGrilleSurConsole();
                     FinDePartie = true;
+                    }
                 }
+                if (joueurCourant==listeJoueurs[1]){
+                    if (plateau.etreGagnantePourCouleur(listeJoueurs[0].getCouleur())&&plateau.etreGagnantePourCouleur(listeJoueurs[1].getCouleur())) {
+                        System.out.println("Bravo " + listeJoueurs[0].getNom() + " a gagne par faute de jeu de la part de "+ joueurCourant.getNom());
+                        plateau.afficherGrilleSurConsole();
+                        FinDePartie = true;
+                    }else if (plateau.etreGagnantePourCouleur(listeJoueurs[1].getCouleur())) {
+                    System.out.println("Bravo " + listeJoueurs[1].getNom() + " a gagne");
+                    plateau.afficherGrilleSurConsole();
+                    FinDePartie = true;
+                    }
+                }
+                
 
                 if (joueurCourant == listeJoueurs[0]) {
                     joueurCourant = listeJoueurs[1];
@@ -172,12 +187,12 @@ public class Partie {
             
             else if(repJoueur==3){
                 if(joueurCourant.utiliserDesintegrateur()==false){
-                    System.out.println("Vous n'avez pas de désintégrateur!");
-                    break;
+                    System.out.println("Vous n'avez pas de desintegrateur!");
+                    continue;
                 }else{
-                    System.out.println("Choisissez la colonne de 1 à 7 du jeton à désintégrer");
+                    System.out.println("Choisissez la colonne de 1 à 7 du jeton à desintegrer");
                     NumColJouer = sc.nextInt()-1;
-                    System.out.println("Choisissez la ligne de 1 à 6 du jeton à désintégrer");
+                    System.out.println("Choisissez la ligne de 1 à 6 du jeton à desintegrer");
                     NumLigneJouer= sc.nextInt()-1;
                     
                     if (plateau.presenceJeton(NumColJouer, NumLigneJouer)== true){
@@ -189,7 +204,7 @@ public class Partie {
                         }
                     }else{
                         System.out.println("Choississez une cellule contenant un jeton!");
-                        break;
+                        continue;
                     }
                     
                     

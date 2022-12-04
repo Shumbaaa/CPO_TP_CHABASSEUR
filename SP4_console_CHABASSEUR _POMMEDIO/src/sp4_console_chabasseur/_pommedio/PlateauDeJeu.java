@@ -58,7 +58,7 @@ public class PlateauDeJeu {
     public boolean ligneGagnantePourCouleur(String uneCouleur){
         for(int ligne=0;ligne<6;ligne++){
             for(int col=0; col<4;col++){
-                if (grille[ligne][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne][col+1].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne][col+2].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne][col+3].lireCouleurDuJeton().equals(uneCouleur));
+                if (grille[ligne][col].lireCouleurDuJeton()==uneCouleur &&grille[ligne][col+1].lireCouleurDuJeton() == uneCouleur &&grille[ligne][col+2].lireCouleurDuJeton() == uneCouleur&&grille[ligne][col+3].lireCouleurDuJeton() == uneCouleur);
                 return true;
             }
         }
@@ -68,7 +68,7 @@ public class PlateauDeJeu {
     public boolean colonneGagnantePourCouleur(String uneCouleur){
         for(int col=0;col<7;col++){
             for(int ligne=0;ligne<3;ligne++){
-                if (grille[ligne][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+1][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+2][col].lireCouleurDuJeton().equals(uneCouleur)&&grille[ligne+3][col].lireCouleurDuJeton().equals(uneCouleur));
+                if (grille[ligne][col].lireCouleurDuJeton()==(uneCouleur)&&grille[ligne+1][col].lireCouleurDuJeton()==(uneCouleur)&&grille[ligne+2][col].lireCouleurDuJeton()==(uneCouleur)&&grille[ligne+3][col].lireCouleurDuJeton()==(uneCouleur));
                 return true;
             }
         }
