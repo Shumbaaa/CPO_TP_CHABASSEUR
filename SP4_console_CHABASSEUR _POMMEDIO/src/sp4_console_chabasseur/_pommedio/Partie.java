@@ -122,7 +122,7 @@ public class Partie {
                     } 
                 }
                  if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur())) {
-                    System.out.println("Bravo " + joueurCourant + " a gagne");
+                    System.out.println("Bravo " + joueurCourant.getNom() + " a gagne");
                     plateau.afficherGrilleSurConsole();
                     FinDePartie = true;
                 }
@@ -168,6 +168,33 @@ public class Partie {
                 else if (joueurCourant == listeJoueurs[1]) {
                     joueurCourant = listeJoueurs[0];
                 }
+            }
+            
+            else if(repJoueur==3){
+                if(joueurCourant.utiliserDesintegrateur()==false){
+                    System.out.println("Vous n'avez pas de désintégrateur!");
+                    break;
+                }else{
+                    System.out.println("Choisissez la colonne de 1 à 7 du jeton à désintégrer");
+                    NumColJouer = sc.nextInt()-1;
+                    System.out.println("Choisissez la ligne de 1 à 6 du jeton à désintégrer");
+                    NumLigneJouer= sc.nextInt()-1;
+                    
+                    if (plateau.presenceJeton(NumColJouer, NumLigneJouer)== true){
+                        plateau.supprimerJeton(NumColJouer, NumLigneJouer); 
+                        if (joueurCourant == listeJoueurs[0]) {
+                            joueurCourant = listeJoueurs[1];
+                        }else if (joueurCourant == listeJoueurs[1]) {
+                            joueurCourant = listeJoueurs[0];
+                        }
+                    }else{
+                        System.out.println("Choississez une cellule contenant un jeton!");
+                        break;
+                    }
+                    
+                    
+                }
+                
             }
             
         }
