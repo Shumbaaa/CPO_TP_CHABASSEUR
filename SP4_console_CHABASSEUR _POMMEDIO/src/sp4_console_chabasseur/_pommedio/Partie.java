@@ -75,15 +75,27 @@ public class Partie {
         attribuerCouleursAuxJoueurs();
         creerEtAffecterJeton(listeJoueurs[0]);
         creerEtAffecterJeton(listeJoueurs[1]);
-        placerTrousNoirsEtDesintegrateurs();
     }
     
     public void lancerPartie(){
         boolean FinDePartie=false;
         joueurCourant=listeJoueurs[0];
+        placerTrousNoirsEtDesintegrateurs();
         
         while(FinDePartie==false){
-            System.out.println(joueurCourant.);
+            Scanner sc;
+            int NumColJouer;
+            int NumLigneJouer;
+            int repJoueur;
+            sc = new Scanner (System.in);
+            plateau.afficherGrilleSurConsole();
+            System.out.println("{Avancée de la partie}");
+            System.out.println("["+listeJoueurs[0]+": Nombre de jetons "+ listeJoueurs[0].getCouleur() +" utilisable = "+listeJoueurs[0].getReserveJetons().size()+" | Nombre de desintegrateurs utilisables = "+listeJoueurs[0].getNombreDesintegrateurs()+"]");
+            System.out.println("["+listeJoueurs[1]+": Nombre de jetons "+ listeJoueurs[1].getCouleur() +" utilisable = "+listeJoueurs[1].getReserveJetons().size()+" | Nombre de desintegrateurs utilisables = "+listeJoueurs[1].getNombreDesintegrateurs()+"]");
+            
+            System.out.println("C'est au tour de "+ joueurCourant+ " de jouer.");
+            System.out.println("[Jouer : tapez 1] [Récupérer un jeton : tapez 2] [Utiliser un désintégrateur : tapez 3");
+            
         }
         
     }
