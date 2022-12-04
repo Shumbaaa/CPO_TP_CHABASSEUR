@@ -142,9 +142,10 @@ public class PlateauDeJeu {
         grille[x][y].placerDesintegrateur();
     }
     
-    public void supprimerJeton(int x, int y){
-        grille[x][y].supprimerJeton();
+    public void supprimerDesintegrateur(int x, int y){
+        grille[x][y].supprimerTrouNoir();
     }
+    
     
     public boolean presenceDesintegrateur(int x, int y){
         if (grille[x][y].presenceDesintegrateur()==true){
@@ -152,6 +153,10 @@ public class PlateauDeJeu {
         }else{
             return false;
         }
+    }
+    
+    public void supprimerJeton(int x, int y){
+        grille[x][y].supprimerJeton();
     }
     
     public Jeton recupererJeton(int x, int y){

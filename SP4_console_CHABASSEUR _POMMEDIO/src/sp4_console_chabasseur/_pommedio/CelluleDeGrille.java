@@ -14,9 +14,9 @@ public class CelluleDeGrille {
     private boolean avoirDesintegrateur;
     
     public CelluleDeGrille(){ //initialise une cellule de grille
-        jetonCourant=null;
-        avoirTrouNoir=false;
-        avoirDesintegrateur=false;
+        this.jetonCourant=null;
+        this.avoirTrouNoir=false;
+        this.avoirDesintegrateur=false;
     }
     public boolean presenceJeton(){ //indique si une cellule possède un jeton ou non
         if (jetonCourant==null){
@@ -88,7 +88,7 @@ public class CelluleDeGrille {
             return jetonCourant.lireCouleur();
         }else if(avoirTrouNoir==true){
             return "@";
-        }else if(avoirDesintegrateur==true&&avoirTrouNoir==false){
+        }else if(avoirDesintegrateur==true && avoirTrouNoir==false){
             return "D";
         }else{
             return ".";

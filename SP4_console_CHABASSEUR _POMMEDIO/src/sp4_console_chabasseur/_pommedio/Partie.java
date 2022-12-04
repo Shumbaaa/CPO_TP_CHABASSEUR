@@ -5,7 +5,6 @@
 package sp4_console_chabasseur._pommedio;
 import java.util.Scanner;
 import java.util.Random;
-
 /**
  *
  * @author solal
@@ -55,7 +54,7 @@ public class Partie {
         while(j!=2){
             int ligne = r.nextInt(6);
             int col= r.nextInt(7);
-            if (plateau.presenceTrouNoir(ligne,col)==false||plateau.presenceDesintegrateur(ligne, col)){
+            if (plateau.presenceTrouNoir(ligne,col)==false||plateau.presenceDesintegrateur(ligne, col)==false){
                 plateau.placerTrouNoir(ligne,col);
                 j+=1;
             }
@@ -64,8 +63,8 @@ public class Partie {
         while(z!=2){
             int ligne = r.nextInt(6);
             int col= r.nextInt(7);
-            if (plateau.presenceTrouNoir(ligne,col)==false||plateau.presenceDesintegrateur(ligne, col)){
-                plateau.placerTrouNoir(ligne,col);
+            if (plateau.presenceTrouNoir(ligne,col)==false||plateau.presenceDesintegrateur(ligne, col)==false){
+                plateau.placerDesintegrateur(ligne,col);
                 z+=1;
             }
         }
@@ -89,12 +88,87 @@ public class Partie {
             int repJoueur;
             sc = new Scanner (System.in);
             plateau.afficherGrilleSurConsole();
-            System.out.println("{Avancée de la partie}");
-            System.out.println("["+listeJoueurs[0]+": Nombre de jetons "+ listeJoueurs[0].getCouleur() +" utilisable = "+listeJoueurs[0].getReserveJetons().size()+" | Nombre de desintegrateurs utilisables = "+listeJoueurs[0].getNombreDesintegrateurs()+"]");
-            System.out.println("["+listeJoueurs[1]+": Nombre de jetons "+ listeJoueurs[1].getCouleur() +" utilisable = "+listeJoueurs[1].getReserveJetons().size()+" | Nombre de desintegrateurs utilisables = "+listeJoueurs[1].getNombreDesintegrateurs()+"]");
+            System.out.println("{Avancee de la partie}");
+            System.out.println("["+listeJoueurs[0].getNom()+": Nombre de jetons "+ listeJoueurs[0].getCouleur() +" utilisable = "+listeJoueurs[0].getReserveJetons().size()+" | Nombre de desintegrateurs utilisables = "+listeJoueurs[0].getNombreDesintegrateurs()+"]");
+            System.out.println("["+listeJoueurs[1].getNom()+": Nombre de jetons "+ listeJoueurs[1].getCouleur() +" utilisable = "+listeJoueurs[1].getReserveJetons().size()+" | Nombre de desintegrateurs utilisables = "+listeJoueurs[1].getNombreDesintegrateurs()+"]");
             
-            System.out.println("C'est au tour de "+ joueurCourant+ " de jouer.");
-            System.out.println("[Jouer : tapez 1] [Récupérer un jeton : tapez 2] [Utiliser un désintégrateur : tapez 3");
+            System.out.println("C'est au tour de "+ joueurCourant.getNom()+ " de jouer.");
+            System.out.println("[Jouer : tapez 1] [Recuperer un jeton : tapez 2] [Utiliser un desintegrateur : tapez 3");
+            repJoueur = sc.nextInt();
+            // on aura donc trois cas
+            if (repJoueur==1){
+                System.out.println("Saisissez le numero de la colonne de 1 à 7 dans laquelle vous souhaitez placer un jeton.");
+                plateau.afficherGrilleSurConsole();
+                NumColJouer= sc.nextInt()-1;
+                NumLigneJouer = plateau.ajouterJetonDansColonne(joueurCourant.jouerJeton(), NumColJouer);
+                
+                if (plateau.grilleRemplie()==true){
+                    System.out.println("Fin de partie, la grille est remplie");
+                    FinDePartie = true;
+                }
+
+                if (NumLigneJouer == -1){
+                    System.out.println("La colonne " +NumColJouer+" est pleine");
+                    joueurCourant.ajouterJetons(new Jeton(joueurCourant.getCouleur()));                
+                }
+                else{                
+                    if (plateau.presenceTrouNoir(NumLigneJouer, NumColJouer)==true){
+                        plateau.supprimerJeton(NumLigneJouer, NumColJouer);
+                        plateau.supprimerTrouNoir(NumLigneJouer, NumColJouer);
+                    }
+                    if (plateau.presenceDesintegrateur(NumLigneJouer, NumColJouer)==true){ 
+                        joueurCourant.obtenirDesintegrateur();
+                        plateau.supprimerDesintegrateur(NumLigneJouer, NumColJouer);
+                    } 
+                }
+                 if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur())) {
+                    System.out.println("Bravo " + joueurCourant + " a gagne");
+                    plateau.afficherGrilleSurConsole();
+                    FinDePartie = true;
+                }
+
+                if (joueurCourant == listeJoueurs[0]) {
+                    joueurCourant = listeJoueurs[1];
+                }                                                  //permet de changer le tour
+                else if (joueurCourant == listeJoueurs[1]) {
+                    joueurCourant = listeJoueurs[0];
+                }
+            
+            }
+            else if (repJoueur==2){  
+                
+                System.out.println("Saisissez le numero de colonne de 1 a 7 du jeton");
+                plateau.afficherGrilleSurConsole();
+                NumColJouer = sc.nextInt()-1;
+                System.out.println("Saisissez le numero de ligne de 1 a 6 du jeton");
+                NumLigneJouer = sc.nextInt()-1;                
+
+                if (plateau.grilleRemplie()==true){
+                    System.out.println("Fin de partie, la grille est remplie");
+                    FinDePartie = true;
+                }
+
+               
+                if (plateau.presenceJeton(NumColJouer, NumLigneJouer)== true ){   //
+                    plateau.supprimerJeton(NumColJouer, NumLigneJouer);           //
+                    joueurCourant.ajouterJetons(new Jeton(joueurCourant.getCouleur()));    
+                    plateau.tasserColonne(NumColJouer);                            
+                }
+
+
+                if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur())) {
+                    System.out.println("Bravo " + joueurCourant + " a gagne");
+                    plateau.afficherGrilleSurConsole();
+                    FinDePartie = true;
+                }
+
+                if (joueurCourant == listeJoueurs[0]) {
+                    joueurCourant = listeJoueurs[1];
+                }
+                else if (joueurCourant == listeJoueurs[1]) {
+                    joueurCourant = listeJoueurs[0];
+                }
+            }
             
         }
         

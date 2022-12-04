@@ -57,5 +57,21 @@ public class joueur {
             return false;
         }
     }
+
+    public ArrayList<Jeton> getReserveJetons() {
+        return reserveJetons;
+    }
+
+    public int getNombreDesintegrateurs() {
+        return nombreDesintegrateurs;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+    
+    
+    
+    
     
 }
