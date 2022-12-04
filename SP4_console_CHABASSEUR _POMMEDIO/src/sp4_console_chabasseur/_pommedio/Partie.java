@@ -97,7 +97,7 @@ public class Partie {
             repJoueur = sc.nextInt();
             // on aura donc trois cas
             if (repJoueur==1){
-                System.out.println("Saisissez le numero de la colonne de 1 à 7 dans laquelle vous souhaitez placer un jeton.");
+                System.out.println("Saisissez le numero de la colonne de 1 a 7 dans laquelle vous souhaitez placer un jeton.");
                 plateau.afficherGrilleSurConsole();
                 NumColJouer= sc.nextInt()-1;
                 NumLigneJouer = plateau.ajouterJetonDansColonne(joueurCourant.jouerJeton(), NumColJouer);
@@ -121,7 +121,7 @@ public class Partie {
                         plateau.supprimerDesintegrateur(NumLigneJouer, NumColJouer);
                     } 
                 }
-                if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur()) == true) {
+                if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur())==true) {   
                     System.out.println("Bravo " + joueurCourant.getNom() + " a gagne");
                     plateau.afficherGrilleSurConsole();
                     FinDePartie = true;
@@ -145,7 +145,7 @@ public class Partie {
 
                
                 if (plateau.presenceJeton(NumColJouer, NumLigneJouer)== true ){   //
-                    if (plateau.lireCouleurDuJeton(NumColJouer,NumLigneJouer)==joueurCourant.getCouleur()){
+                    if (plateau.lireCouleurJeton(NumColJouer,NumLigneJouer)==joueurCourant.getCouleur()){
                         plateau.supprimerJeton(NumColJouer, NumLigneJouer);           //
                         joueurCourant.ajouterJetons(new Jeton(joueurCourant.getCouleur()));    
                         plateau.tasserColonne(NumColJouer); 
@@ -196,18 +196,21 @@ public class Partie {
                     NumLigneJouer= sc.nextInt()-1;
                     
                     if (plateau.presenceJeton(NumColJouer, NumLigneJouer)== true){
-                        plateau.supprimerJeton(NumColJouer, NumLigneJouer); 
-                        if (joueurCourant == listeJoueurs[0]) {
-                            joueurCourant = listeJoueurs[1];
-                        }else if (joueurCourant == listeJoueurs[1]) {
-                            joueurCourant = listeJoueurs[0];
+                        if (plateau.lireCouleurJeton(NumColJouer,NumLigneJouer)!=joueurCourant.getCouleur()){
+                            plateau.supprimerJeton(NumColJouer, NumLigneJouer); 
+                            if (joueurCourant == listeJoueurs[0]) {
+                                joueurCourant = listeJoueurs[1];
+                            }else if (joueurCourant == listeJoueurs[1]) {
+                                joueurCourant = listeJoueurs[0];
+                            }
+                        }else{
+                            System.out.println("Vous ne pouvez pas desintegrer vos propre jeton!");
+                            continue;
                         }
                     }else{
                         System.out.println("Choississez une cellule contenant un jeton!");
                         continue;
                     }
-                    
-                    
                 }
                 
             }
