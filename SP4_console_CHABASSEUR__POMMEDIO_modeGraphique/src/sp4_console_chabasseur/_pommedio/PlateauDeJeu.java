@@ -162,5 +162,15 @@ public class PlateauDeJeu {
     public Jeton recupererJeton(int x, int y) {
         return grille[x][y].recupererJeton();
     }
+    
+    public void viderGrille(){
+        for(int ligne=0;ligne<6;ligne++){
+            for(int col=0;col<7;col++){
+                grille[ligne][col].supprimerDesintegrateur();
+                grille[ligne][col].supprimerJeton();
+                grille[ligne][col].supprimerTrouNoir();
+            }
+        }
+    }
 
 }

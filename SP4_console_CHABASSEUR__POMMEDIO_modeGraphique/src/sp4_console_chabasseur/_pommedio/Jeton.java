@@ -31,7 +31,7 @@ public class Jeton {
     
     @Override    
     public String toString() {
-        if (couleur == "rouge" ){
+        if (couleur == "Rouge" ){
             return "R" ;
     }
         else{

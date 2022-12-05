@@ -23,11 +23,11 @@ public class Partie {
     public void attribuerCouleursAuxJoueurs() {
         double alea = Math.random(); //Math.random génére un double aléatoire entre 0 et 1   
         if (alea<0.51){       //une chance sur 2 d'etre inferieur a 0,5
-            listeJoueurs[0].affecterCouleur("rouge");        
-            listeJoueurs[1].affecterCouleur("jaune");    
+            listeJoueurs[0].affecterCouleur("Rouge");        
+            listeJoueurs[1].affecterCouleur("Jaune");    
         }else {     
-            listeJoueurs[0].affecterCouleur("jaune");       
-            listeJoueurs[1].affecterCouleur("rouge");   
+            listeJoueurs[0].affecterCouleur("Jaune");       
+            listeJoueurs[1].affecterCouleur("Rouge");   
         }
     }
     
@@ -71,15 +71,24 @@ public class Partie {
     }
     
     public void initialiserPartie(){
+        plateau.viderGrille();
+                      
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez le nom du joueur 1");
+        joueur J1 = new joueur (sc.nextLine());
+        System.out.println("Entrez le nom du joueur 2");
+        joueur J2 = new joueur (sc.nextLine());
+        
         attribuerCouleursAuxJoueurs();
         creerEtAffecterJeton(listeJoueurs[0]);
         creerEtAffecterJeton(listeJoueurs[1]);
+        joueurCourant=listeJoueurs[0];
     }
     
     public void lancerPartie(){
+        
+        initialiserPartie();
         boolean FinDePartie=false;
-        joueurCourant=listeJoueurs[0];
-        placerTrousNoirsEtDesintegrateurs();
         
         while(FinDePartie==false){
             Scanner sc;
