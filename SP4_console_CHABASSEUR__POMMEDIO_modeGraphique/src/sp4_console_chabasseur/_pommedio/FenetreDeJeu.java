@@ -44,7 +44,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                             for (int k = 0; k < 7; k++) {
                                 plateau.tasserColonne(k);   
                             }
-                            
+                            DebloquerBoutonColonne();
+                            if(checkWin()==true){
+                                Rejouer();
+                            }
                             joueurSuivant();
                         } else {
                             if(joueurCourant.utiliserDesintegrateur()==true){
@@ -55,6 +58,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                                 panneau_grille.repaint();
                             for (int k = 0; k < 7; k++) {
                                 plateau.tasserColonne(k); 
+                            }
+                            DebloquerBoutonColonne();
+                            if(checkWin()==true){
+                                Rejouer();
                             }
                             joueurSuivant();
                             
@@ -376,21 +383,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         int NumLigneJouer;
         NumLigneJouer = plateau.ajouterJetonDansColonne(joueurCourant.jouerJeton(), indice_colonne);
         panneau_grille.repaint();
-        if (plateau.grilleRemplie() == true) {
-            textMessage.setText("Fin de partie, la grille est remplie. \nCliquez sur démarrer partie pour rejouer.");
-            btn_col_1.setEnabled(false);
-            btn_col_2.setEnabled(false);
-            btn_col_3.setEnabled(false);
-            btn_col_4.setEnabled(false);
-            btn_col_5.setEnabled(false);
-            btn_col_6.setEnabled(false);
-            btn_col_7.setEnabled(false);
-            btn_start.setEnabled(true);
-            return false;
-        }
-        if (NumLigneJouer == -1) {
-            System.out.println("La colonne " + indice_colonne + " est pleine.");
-        } else {
+       
             if (plateau.presenceTrouNoir(NumLigneJouer, indice_colonne) == true) {
                 plateau.activerTrouNoir(NumLigneJouer, indice_colonne);
             }
@@ -400,45 +393,49 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 lbl_j1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");
                 lbl_j2_desint.setText(listeJoueurs[1].getNombreDesintegrateurs() + "");
             }
+        
+        if (checkWin()==true){
+            Rejouer();
         }
-        if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur()) == true) {
-            plateau.afficherGrilleSurConsole();
-            textMessage.setText("Victoire de " + joueurCourant.getNom()+". \nCliquez sur démarrer partie pour rejouer.");
-            btn_col_1.setEnabled(false);
-            btn_col_2.setEnabled(false);
-            btn_col_3.setEnabled(false);
-            btn_col_4.setEnabled(false);
-            btn_col_5.setEnabled(false);
-            btn_col_6.setEnabled(false);
-            btn_col_7.setEnabled(false);
-            btn_start.setEnabled(true);
+        
+        
+        if (plateau.grilleRemplie() == true) {
+            textMessage.setText("Fin de partie, la grille est remplie. \nCliquez sur démarrer partie pour rejouer.");
+            Rejouer();
+            return false;
         }
+        
+
+        return true;
+    }
+    public boolean checkWin(){
         if (plateau.etreGagnantePourCouleur(listeJoueurs[0].getCouleur()) == true && plateau.etreGagnantePourCouleur(listeJoueurs[1].getCouleur()) == true) {
             plateau.afficherGrilleSurConsole();
             if (joueurCourant == listeJoueurs[0]) {
                 textMessage.setText("Victoire de " + listeJoueurs[1].getNom() + " par faute de jeu de l'adversaire. \nCliquez sur démarrer partie pour rejouer.");
-                btn_col_1.setEnabled(false);
-                btn_col_2.setEnabled(false);
-                btn_col_3.setEnabled(false);
-                btn_col_4.setEnabled(false);
-                btn_col_5.setEnabled(false);
-                btn_col_6.setEnabled(false);
-                btn_col_7.setEnabled(false);
-                btn_start.setEnabled(true);
+               return true;
             } else {
                 textMessage.setText("Victoire de " + listeJoueurs[0].getNom() + " par faute de jeu de l'adversaire. \nCliquez sur démarrer partie pour rejouer.");
-                btn_col_1.setEnabled(false);
-                btn_col_2.setEnabled(false);
-                btn_col_3.setEnabled(false);
-                btn_col_4.setEnabled(false);
-                btn_col_5.setEnabled(false);
-                btn_col_6.setEnabled(false);
-                btn_col_7.setEnabled(false);
-                btn_start.setEnabled(true);
+              return true;
             }
         }
-
-        return true;
+        if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur()) == true) {
+            plateau.afficherGrilleSurConsole();
+            textMessage.setText("Victoire de " + joueurCourant.getNom()+". \nCliquez sur démarrer partie pour rejouer.");
+            return true;
+    }
+        return false;
+    }
+    
+    public void Rejouer(){
+        btn_col_1.setEnabled(false);
+        btn_col_2.setEnabled(false);
+        btn_col_3.setEnabled(false);
+        btn_col_4.setEnabled(false);
+        btn_col_5.setEnabled(false);
+        btn_col_6.setEnabled(false);
+        btn_col_7.setEnabled(false);
+        btn_start.setEnabled(true);
     }
 
     public void joueurSuivant() {
@@ -569,39 +566,39 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
     }
     public void DebloquerBoutonColonne() {
-        for (int i = 1; i<8; i++) {
+        for (int i = 0; i<7; i++) {
             if (plateau.colonneRemplie(i) == false) {
-                if (i == 1) {
+                if (i == 0) {
                     if (btn_col_1.isEnabled() == false) {
                         btn_col_1.setEnabled(true);
                     }
                 }
-                if (i == 2) {
+                if (i == 1) {
                     if (btn_col_2.isEnabled() == false) {
                         btn_col_2.setEnabled(true);
                     }
                 }
-                if (i == 3) {
+                if (i == 2) {
                     if (btn_col_3.isEnabled() == false) {
                         btn_col_3.setEnabled(true);
                     }
                 }
-                if (i == 4) {
+                if (i == 3) {
                     if (btn_col_4.isEnabled() == false) {
                         btn_col_4.setEnabled(true);
                     }
                 }
-                if (i == 5) {
+                if (i == 4) {
                     if (btn_col_5.isEnabled() == false) {
                         btn_col_5.setEnabled(true);
                     }
                 }
-                if (i == 6) {
+                if (i == 5) {
                     if (btn_col_6.isEnabled() == false) {
                         btn_col_6.setEnabled(true);
                     }
                 }
-                if (i == 7) {
+                if (i == 6) {
                     if (btn_col_7.isEnabled() == false) {
                         btn_col_7.setEnabled(true);
                     }
