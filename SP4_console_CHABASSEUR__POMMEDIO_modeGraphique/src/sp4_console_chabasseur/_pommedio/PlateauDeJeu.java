@@ -142,7 +142,11 @@ public class PlateauDeJeu {
     public void placerDesintegrateur(int x, int y) {
         grille[x][y].placerDesintegrateur();
     }
-
+    
+    public void activerTrouNoir(int x, int y) {
+        grille[x][y].activerTrouNoir();
+    }
+    
     public void supprimerDesintegrateur(int x, int y) {
         grille[x][y].supprimerDesintegrateur();
     }
