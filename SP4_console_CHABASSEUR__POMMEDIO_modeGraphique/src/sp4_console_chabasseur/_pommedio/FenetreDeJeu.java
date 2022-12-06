@@ -31,6 +31,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
                 cellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        
                         CelluleDeGrille c = cellGraph.celluleAssociee;
                         if (c.presenceJeton() == false) {
                             return;
@@ -41,8 +42,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                             joueurCourant.ajouterJetons(new Jeton(joueurCourant.getCouleur()));
                             panneau_grille.repaint();
                             for (int k = 0; k < 7; k++) {
-                                plateau.tasserColonne(k);
+                                plateau.tasserColonne(k);   
                             }
+                            
                             joueurSuivant();
                         } else {
                             if(joueurCourant.utiliserDesintegrateur()==true){
@@ -55,6 +57,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                                 plateau.tasserColonne(k); 
                             }
                             joueurSuivant();
+                            
                         }else{
                                textMessage.setText("Le joueur " + joueurCourant.getNom() + " n'a pas de désintégrateur!.");
                                
@@ -62,10 +65,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                             
                         }
                     }
+                    
                 });
 
                 panneau_grille.add(cellGraph);
                 panneau_grille.repaint();
+                
             }
         }
     }
@@ -305,7 +310,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         initialiserPartie();
         panneau_grille.repaint();
         btn_start.setEnabled(false);
-
+        btn_col_1.setEnabled(true);
+        btn_col_2.setEnabled(true);
+        btn_col_3.setEnabled(true);
+        btn_col_4.setEnabled(true);
+        btn_col_5.setEnabled(true);
+        btn_col_6.setEnabled(true);
+        btn_col_7.setEnabled(true);
     }//GEN-LAST:event_btn_startActionPerformed
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
@@ -366,11 +377,19 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         NumLigneJouer = plateau.ajouterJetonDansColonne(joueurCourant.jouerJeton(), indice_colonne);
         panneau_grille.repaint();
         if (plateau.grilleRemplie() == true) {
-            System.out.println("Fin de partie, la grille est remplie");
+            textMessage.setText("Fin de partie, la grille est remplie. \nCliquez sur démarrer partie pour rejouer.");
+            btn_col_1.setEnabled(false);
+            btn_col_2.setEnabled(false);
+            btn_col_3.setEnabled(false);
+            btn_col_4.setEnabled(false);
+            btn_col_5.setEnabled(false);
+            btn_col_6.setEnabled(false);
+            btn_col_7.setEnabled(false);
+            btn_start.setEnabled(true);
             return false;
         }
         if (NumLigneJouer == -1) {
-            System.out.println("La colonne " + indice_colonne + " est pleine");
+            System.out.println("La colonne " + indice_colonne + " est pleine.");
         } else {
             if (plateau.presenceTrouNoir(NumLigneJouer, indice_colonne) == true) {
                 plateau.activerTrouNoir(NumLigneJouer, indice_colonne);
@@ -384,15 +403,38 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
         if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur()) == true) {
             plateau.afficherGrilleSurConsole();
-            textMessage.setText("Victoire de " + joueurCourant.getNom());
-
+            textMessage.setText("Victoire de " + joueurCourant.getNom()+". \nCliquez sur démarrer partie pour rejouer.");
+            btn_col_1.setEnabled(false);
+            btn_col_2.setEnabled(false);
+            btn_col_3.setEnabled(false);
+            btn_col_4.setEnabled(false);
+            btn_col_5.setEnabled(false);
+            btn_col_6.setEnabled(false);
+            btn_col_7.setEnabled(false);
+            btn_start.setEnabled(true);
         }
         if (plateau.etreGagnantePourCouleur(listeJoueurs[0].getCouleur()) == true && plateau.etreGagnantePourCouleur(listeJoueurs[1].getCouleur()) == true) {
             plateau.afficherGrilleSurConsole();
             if (joueurCourant == listeJoueurs[0]) {
-                textMessage.setText("Victoire de " + listeJoueurs[1].getNom() + " par faute de jeu de l'adversaire");
+                textMessage.setText("Victoire de " + listeJoueurs[1].getNom() + " par faute de jeu de l'adversaire. \nCliquez sur démarrer partie pour rejouer.");
+                btn_col_1.setEnabled(false);
+                btn_col_2.setEnabled(false);
+                btn_col_3.setEnabled(false);
+                btn_col_4.setEnabled(false);
+                btn_col_5.setEnabled(false);
+                btn_col_6.setEnabled(false);
+                btn_col_7.setEnabled(false);
+                btn_start.setEnabled(true);
             } else {
-                textMessage.setText("Victoire de " + listeJoueurs[0].getNom() + " par faute de jeu de l'adversaire");
+                textMessage.setText("Victoire de " + listeJoueurs[0].getNom() + " par faute de jeu de l'adversaire. \nCliquez sur démarrer partie pour rejouer.");
+                btn_col_1.setEnabled(false);
+                btn_col_2.setEnabled(false);
+                btn_col_3.setEnabled(false);
+                btn_col_4.setEnabled(false);
+                btn_col_5.setEnabled(false);
+                btn_col_6.setEnabled(false);
+                btn_col_7.setEnabled(false);
+                btn_start.setEnabled(true);
             }
         }
 
@@ -472,7 +514,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         lbl_j2_couleur.setText(J2.getCouleur());
         lbl_j1_desint.setText(J1.getNombreDesintegrateurs() + "");
         lbl_j2_desint.setText(J2.getNombreDesintegrateurs() + "");
-
+        textMessage.setText("");
         lbl_jcourant.setText(joueurCourant.getNom());
 
     }
@@ -523,6 +565,47 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             if (plateau.presenceTrouNoir(ligne, col) == false || plateau.presenceDesintegrateur(ligne, col) == false) {
                 plateau.placerDesintegrateur(ligne, col);
                 z += 1;
+            }
+        }
+    }
+    public void DebloquerBoutonColonne() {
+        for (int i = 1; i<8; i++) {
+            if (plateau.colonneRemplie(i) == false) {
+                if (i == 1) {
+                    if (btn_col_1.isEnabled() == false) {
+                        btn_col_1.setEnabled(true);
+                    }
+                }
+                if (i == 2) {
+                    if (btn_col_2.isEnabled() == false) {
+                        btn_col_2.setEnabled(true);
+                    }
+                }
+                if (i == 3) {
+                    if (btn_col_3.isEnabled() == false) {
+                        btn_col_3.setEnabled(true);
+                    }
+                }
+                if (i == 4) {
+                    if (btn_col_4.isEnabled() == false) {
+                        btn_col_4.setEnabled(true);
+                    }
+                }
+                if (i == 5) {
+                    if (btn_col_5.isEnabled() == false) {
+                        btn_col_5.setEnabled(true);
+                    }
+                }
+                if (i == 6) {
+                    if (btn_col_6.isEnabled() == false) {
+                        btn_col_6.setEnabled(true);
+                    }
+                }
+                if (i == 7) {
+                    if (btn_col_7.isEnabled() == false) {
+                        btn_col_7.setEnabled(true);
+                    }
+                }
             }
         }
     }
