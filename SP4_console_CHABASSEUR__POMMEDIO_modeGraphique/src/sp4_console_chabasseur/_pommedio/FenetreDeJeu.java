@@ -393,7 +393,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 lbl_j1_desint.setText(listeJoueurs[0].getNombreDesintegrateurs() + "");
                 lbl_j2_desint.setText(listeJoueurs[1].getNombreDesintegrateurs() + "");
             }
-        
+            
         if (checkWin()==true){
             Rejouer();
         }
@@ -419,11 +419,17 @@ public class FenetreDeJeu extends javax.swing.JFrame {
               return true;
             }
         }
-        if (plateau.etreGagnantePourCouleur(joueurCourant.getCouleur()) == true) {
+        
+        if (plateau.etreGagnantePourCouleur(listeJoueurs[0].getCouleur()) == true) {
             plateau.afficherGrilleSurConsole();
-            textMessage.setText("Victoire de " + joueurCourant.getNom()+". \nCliquez sur démarrer partie pour rejouer.");
+            textMessage.setText("Victoire de " + listeJoueurs[0].getNom()+". \nCliquez sur démarrer partie pour rejouer.");
             return true;
-    }
+        }
+        if (plateau.etreGagnantePourCouleur(listeJoueurs[1].getCouleur()) == true) {
+            plateau.afficherGrilleSurConsole();
+            textMessage.setText("Victoire de " + listeJoueurs[1].getNom()+". \nCliquez sur démarrer partie pour rejouer.");
+            return true;
+        }
         return false;
     }
     
